@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% import 'macros.html' as macros %}
+
+{% block content %}
+<div class="admin-shell">
+  <aside class="admin-sidebar">
+    <div class="sidebar-top">
+      <img src="{{ url_for('static', filename='img/logo-centro-espirita.jpeg') }}" alt="logo">
+      <div class="user-info">
+        <strong>{{ session.get('user','Usuário') }}</strong>
+        <div class="user-meta">{{ session.get('user_level','-') }}</div>
+        <div class="user-meta">Último login: {{ session.get('last_login','-') }}</div>
+      </div>
+    </div>
+    <nav class="sidebar-nav">
+      <ul>
+        <li><a href="{{ url_for('admin_dashboard') }}">Dashboard</a></li>
+        <li><a href="{{ url_for('admin_agenda') }}">Agenda</a></li>
+        <li><a href="{{ url_for('admin_membros') }}">Membros</a></li>
+        <li><a href="{{ url_for('admin_mensalidades') }}">Mensalidades</a></li>
+        <li><a href="{{ url_for('admin_financeiro') }}">Financeiro</a></li>
+        <li><a href="{{ url_for('admin_documentos') }}">Documentos</a></li>
+        <li><a href="{{ url_for('admin_relatorios') }}">Relatórios</a></li>
+        <li><a href="{{ url_for('admin_usuarios') }}">Usuários</a></li>
+        <li><a href="{{ url_for('admin_configuracoes') }}">Configurações</a></li>
+        <li><a href="{{ url_for('admin_logs') }}">Logs</a></li>
+        <li><a href="{{ url_for('admin_backup') }}">Backup</a></li>
+        <li><a href="{{ url_for('admin_logout') }}">Sair</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <main class="admin-content">
+    <div class="admin-topbar">
+      <h1>{{ title or 'Painel Administrativo' }}</h1>
+    </div>
+    <div class="admin-body">
+      {% block admin_content %}{% endblock %}
+    </div>
+  </main>
+</div>
+{% endblock %}

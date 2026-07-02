@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+  <section class="page-hero">
+    <div class="container">
+      <h1>Login Administrativo</h1>
+      <form method="post">
+        <label>Usuário <input name="username"></label>
+        <label>Senha <input type="password" name="password"></label>
+        <input type="hidden" name="csrf_token" value="{{ session.get('_csrf_token','') }}">
+        <button class="button primary" type="submit">Entrar</button>
+      </form>
+    </div>
+  </section>
+{% endblock %}

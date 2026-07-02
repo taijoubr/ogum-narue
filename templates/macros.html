@@ -1,0 +1,7 @@
+{# Shared Jinja2 macros for admin UI #}
+{% macro card(title, body) %}
+<div class="card">
+  <h3>{{ title }}</h3>
+  <div class="card-body">{{ body }}</div>
+</div>
+{% endmacro %}

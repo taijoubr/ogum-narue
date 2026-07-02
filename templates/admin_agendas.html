@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="page-hero">
+  <div class="container">
+    <p class="section-label">Administração</p>
+    <h1>Cadastro de próximas giras</h1>
+    <p>Adicione novas giras para que apareçam automaticamente na página de agenda.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <form method="post" class="admin-form">
+      <label>
+        Data
+        <input type="text" name="data" placeholder="Ex: Sábado, 20 de julho" required>
+      </label>
+      <label>
+        Horário
+        <input type="text" name="horario" placeholder="Ex: 19h30" required>
+      </label>
+      <label>
+        Linha espiritual
+        <input type="text" name="linha" placeholder="Ex: Umbanda" required>
+      </label>
+      <label>
+        Descrição
+        <textarea name="descricao" placeholder="Descreva a gira"></textarea>
+      </label>
+      <label>
+        Observações
+        <textarea name="observacoes" placeholder="Informações adicionais"></textarea>
+      </label>
+      <button type="submit" class="button primary">Salvar gira</button>
+    </form>
+
+    {% if giras %}
+      <div class="cards-grid">
+        {% for gira in giras %}
+          <article class="card">
+            <h3>{{ gira.data }}</h3>
+            <p><strong>Horário:</strong> {{ gira.horario }}</p>
+            <p><strong>Tipo:</strong> {{ gira.linha }}</p>
+            <p><strong>Descrição:</strong> {{ gira.descricao }}</p>
+            <p><strong>Observações:</strong> {{ gira.observacoes }}</p>
+          </article>
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="empty-state">
+        <h2>Não há giras cadastradas ainda.</h2>
+      </div>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}
