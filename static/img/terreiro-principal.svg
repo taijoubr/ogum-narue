@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 420" role="img" aria-label="Ilustração do terreiro principal">
+  <rect width="600" height="420" fill="#eef3f8"/>
+  <rect x="120" y="80" width="360" height="240" rx="24" fill="#ffffff"/>
+  <rect x="150" y="110" width="300" height="180" rx="18" fill="#1f4f7a"/>
+  <rect x="190" y="150" width="80" height="100" rx="8" fill="#c9a227"/>
+  <rect x="330" y="150" width="80" height="100" rx="8" fill="#c9a227"/>
+  <path d="M260 150h80" stroke="#ffffff" stroke-width="8" stroke-linecap="round"/>
+  <path d="M240 260h120" stroke="#ffffff" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="300" cy="252" r="22" fill="#ffffff"/>
+</svg>

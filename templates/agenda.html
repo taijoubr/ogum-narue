@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="page-hero">
+  <div class="container">
+    <p class="section-label">Agenda</p>
+    <h1>Próximas giras e encontros</h1>
+    <p>Estrutura preparada para integração futura com a base de dados.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    {% if giras %}
+      <div class="cards-grid">
+        {% for gira in giras %}
+          <article class="card">
+            <h3>{{ gira.data }}</h3>
+            <p><strong>Horário:</strong> {{ gira.horario }}</p>
+            <p><strong>Linha espiritual:</strong> {{ gira.linha }}</p>
+            <p><strong>Descrição:</strong> {{ gira.descricao }}</p>
+            <p><strong>Observações:</strong> {{ gira.observacoes }}</p>
+          </article>
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="empty-state">
+        <h2>Em breve divulgaremos nossa próxima gira.</h2>
+        <p>A agenda será atualizada com novas informações em breve.</p>
+      </div>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}

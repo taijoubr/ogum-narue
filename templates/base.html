@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ title }} | Centro Espírita Ogum Naruê</title>
+    <meta name="description" content="{{ description }}">
+    <meta name="keywords" content="{{ keywords }}">
+    <meta property="og:title" content="{{ title }} | Centro Espírita Ogum Naruê">
+    <meta property="og:description" content="{{ description }}">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Centro Espírita Ogum Naruê">
+    <link rel="icon" type="image/jpeg" href="{{ url_for('static', filename='img/logo centro espirita.jpeg') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header">
+        <div class="container nav-bar">
+          <a class="brand" href="{{ url_for('home') }}" aria-label="Página inicial do Centro Espírita Ogum Naruê">
+            <img src="{{ url_for('static', filename='img/logo centro espirita.jpeg') }}" alt="Logomarca do Centro Espírita Ogum Naruê">
+            <span>Centro Espírita<br><strong>Ogum Naruê</strong></span>
+          </a>
+
+          <input type="checkbox" id="nav-toggle" class="nav-toggle" hidden>
+          <label for="nav-toggle" class="nav-toggle-label" aria-label="Abrir menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </label>
+
+          <nav class="main-nav" aria-label="Menu principal">
+            <ul>
+              <li><a href="{{ url_for('home') }}">Home</a></li>
+              <li><a href="{{ url_for('historia') }}">Nossa História</a></li>
+              <li><a href="{{ url_for('agenda') }}">Agenda</a></li>
+              <li><a href="{{ url_for('nossa_casa') }}">Nossa Casa</a></li>
+              <li><a href="{{ url_for('faq') }}">Perguntas Frequentes</a></li>
+              <li><a href="{{ url_for('contato') }}">Contato</a></li>
+              <li><a class="button-link" href="{{ url_for('contato') }}">Entrar</a></li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+
+      <main id="content">
+        {% block content %}{% endblock %}
+      </main>
+
+      <footer class="site-footer">
+        <div class="container footer-grid">
+          <div>
+            <a class="brand brand-footer" href="{{ url_for('home') }}">
+              <img src="{{ url_for('static', filename='img/logo centro espirita.jpeg') }}" alt="Logomarca do Centro Espírita Ogum Naruê">
+              <span>Centro Espírita<br><strong>Ogum Naruê</strong></span>
+            </a>
+            <p>Espiritualidade, acolhimento e respeito à história da casa.</p>
+          </div>
+          <div>
+            <h2>Endereço</h2>
+            <p>Rua Dias Ribeiro, quadra 5 lote 6<br>Parque São José, Belford Roxo - RJ</p>
+          </div>
+          <div>
+            <h2>Contato</h2>
+            <p>(11) 3333-0000<br>+55 (11) 99999-0000</p>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>© {{ current_year }} Centro Espírita Ogum Naruê. Todos os direitos reservados.</p>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

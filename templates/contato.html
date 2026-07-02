@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="page-hero">
+  <div class="container">
+    <p class="section-label">Contato</p>
+    <h1>Fale com a casa</h1>
+    <p>Estamos à disposição para acolher dúvidas, orientações e visitas.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container contact-grid">
+    <div class="card">
+      <h2>Informações</h2>
+      <ul class="contact-list">
+        <li><strong>Endereço:</strong> Rua Dias Ribeiro, quadra 5 lote 6, Parque São José, Belford Roxo - RJ</li>
+        <li><strong>Telefone:</strong> (11) 3333-0000</li>
+        <li><strong>WhatsApp:</strong> +55 (11) 99999-0000</li>
+        <li><strong>Atendimento:</strong> Segunda a Sexta, das 09h às 18h</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h2>Mapa</h2>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d459.9684742097761!2d-43.333802279326946!3d-22.73761371198084!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x996fde5d742915%3A0xe2f1a280244d8189!2sR.%20Dias%20Ribeiro%2C%206%20-%20quadra%205%20-%20Vila%20Esperanca%2C%20Belford%20Roxo%20-%20RJ%2C%2026190-250!5e0!3m2!1spt-BR!2sbr!4v1782950511124!5m2!1spt-BR!2sbr" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    </div>
+  </div>
+</section>
+
+<section class="section section-muted">
+  <div class="container form-card">
+    <h2>Formulário de contato</h2>
+    <form>
+      <label for="name">Nome</label>
+      <input id="name" name="name" type="text" placeholder="Seu nome">
+
+      <label for="email">E-mail</label>
+      <input id="email" name="email" type="email" placeholder="Seu e-mail">
+
+      <label for="message">Mensagem</label>
+      <textarea id="message" name="message" rows="5" placeholder="Escreva sua mensagem"></textarea>
+
+      <button class="button primary" type="button">Enviar</button>
+    </form>
+  </div>
+</section>
+{% endblock %}

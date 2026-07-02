@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="section">
+  <div class="container error-card">
+    <p class="section-label">Erro 404</p>
+    <h1>Página não encontrada</h1>
+    <p>A página que você procura não existe ou foi removida.</p>
+    <a class="button primary" href="{{ url_for('home') }}">Voltar para a home</a>
+  </div>
+</section>
+{% endblock %}

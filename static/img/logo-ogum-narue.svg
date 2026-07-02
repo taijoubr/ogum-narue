@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="Logomarca do Centro Espírita Ogum Naruê">
+  <rect width="256" height="256" rx="40" fill="#1f4f7a"/>
+  <circle cx="128" cy="128" r="86" fill="#ffffff"/>
+  <path d="M128 44c-46 0-84 38-84 84 0 46 38 84 84 84 46 0 84-38 84-84 0-46-38-84-84-84zm0 22c34 0 62 28 62 62s-28 62-62 62-62-28-62-62 28-62 62-62z" fill="#1f4f7a"/>
+  <path d="M128 78c-27 0-50 20-50 50 0 20 12 38 29 45l-8 19h58l-8-19c17-7 29-25 29-45 0-30-23-50-50-50z" fill="#c9a227"/>
+  <path d="M92 118h72" stroke="#1f4f7a" stroke-width="8" stroke-linecap="round"/>
+  <path d="M108 92h40" stroke="#1f4f7a" stroke-width="8" stroke-linecap="round"/>
+</svg>

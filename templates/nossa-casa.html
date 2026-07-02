@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="page-hero">
+  <div class="container">
+    <p class="section-label">Nossa Casa</p>
+    <h1>Uma casa preparada para acolher e servir</h1>
+    <p>Espaço de atendimento, espiritualidade, convivência e cuidado com a comunidade.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="cards-grid">
+      <article class="card">
+        <h3>Quem somos</h3>
+        <p>Somos uma instituição dedicada à prática do acolhimento, ao estudo da espiritualidade e à orientação da vida em comunidade.</p>
+      </article>
+      <article class="card">
+        <h3>Objetivos</h3>
+        <p>Promover encontros de reflexão, fortalecimento moral e cuidado espiritual com respeito à história da casa.</p>
+      </article>
+      <article class="card">
+        <h3>Trabalhos espirituais</h3>
+        <p>Atividades voltadas ao atendimento, à orientação e à formação da comunidade em um ambiente sereno.</p>
+      </article>
+      <article class="card">
+        <h3>Atendimento</h3>
+        <p>Orientação acolhedora, escuta respeitosa e acompanhamento espiritual conforme a necessidade de cada pessoa.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section section-muted">
+  <div class="container two-column-grid">
+    <div class="card">
+      <h2>Horários</h2>
+      <table class="info-table">
+        <thead>
+          <tr>
+            <th>Dia</th>
+            <th>Atendimento</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Segunda a Sexta</td>
+            <td>09h às 18h</td>
+          </tr>
+          <tr>
+            <td>Sábado</td>
+            <td>09h às 13h</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card">
+      <h2>Fotos</h2>
+      <div class="photo-grid">
+        <img src="{{ url_for('static', filename='img/casa-sala.svg') }}" alt="Foto ilustrativa de uma sala da casa">
+        <img src="{{ url_for('static', filename='img/terreiro-principal.svg') }}" alt="Foto ilustrativa da fachada do terreiro">
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
