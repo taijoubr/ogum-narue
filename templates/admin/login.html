@@ -3,12 +3,20 @@
   <section class="page-hero">
     <div class="container">
       <h1>Login Administrativo</h1>
+      {% if error %}
+        <div class="alert alert-error">{{ error }}</div>
+      {% endif %}
       <form method="post">
-        <label>Usuário <input name="username"></label>
-        <label>Senha <input type="password" name="password"></label>
+        <label>Usuário <input name="username" required></label>
+        <label>Senha <input type="password" name="password" required></label>
         <input type="hidden" name="csrf_token" value="{{ session.get('_csrf_token','') }}">
         <button class="button primary" type="submit">Entrar</button>
       </form>
+      {% if supabase_enabled %}
+        <p class="hint">Usando autenticação Supabase para login.</p>
+      {% else %}
+        <p class="hint">Modo fallback local ativado. Configure SUPABASE_URL e SUPABASE_KEY para usar Supabase.</p>
+      {% endif %}
     </div>
   </section>
 {% endblock %}

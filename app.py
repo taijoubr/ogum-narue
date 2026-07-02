@@ -1,12 +1,19 @@
+import os
 from datetime import datetime
 import json
-import os
 
+from dotenv import load_dotenv
 from flask import Flask, render_template, request, redirect, url_for, session
-from utils.auth import init_app, login_required, programador_required, admin_required, generate_csrf_token, validate_csrf
+from utils.auth import init_app, login_required, programador_required, generate_csrf_token, validate_csrf
 from services.audit_service import ensure_tables, record_audit
+from services.auth_service import (
+    determine_user_level,
+    is_supabase_auth_enabled,
+    supabase_sign_in,
+)
 from models.user_level import UserLevel
-import os
+
+load_dotenv()
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "ogum-narue-dev"
@@ -125,25 +132,62 @@ def admin_dashboard():
 @app.route('/admin/login', methods=['GET', 'POST'])
 def admin_login():
     if request.method == 'POST':
-        username = request.form.get('username')
-        password = request.form.get('password')
+        username = request.form.get('username', '').strip()
+        password = request.form.get('password', '')
         token = request.form.get('csrf_token')
         if not validate_csrf(token):
-            return render_template('admin/login.html', error='CSRF inválido')
+            return render_template(
+                'admin/login.html',
+                error='CSRF inválido',
+                supabase_enabled=is_supabase_auth_enabled(),
+            )
 
-        # simple env-based admin credentials (recommend replacing with proper auth)
+        if is_supabase_auth_enabled():
+            try:
+                auth_data = supabase_sign_in(username, password)
+                user_data = auth_data.get('user') or {}
+                email = user_data.get('email', username).strip().lower()
+                user_level = determine_user_level(email)
+                if not user_level:
+                    return render_template(
+                        'admin/login.html',
+                        error='Usuário autenticado, mas não autorizado ao painel administrativo.',
+                        supabase_enabled=True,
+                    )
+                session['user'] = email
+                session['user_level'] = user_level
+                session['last_login'] = str(datetime.now())
+                session.permanent = True
+                record_audit(email, 'login', 'Login administrativo via Supabase', request.remote_addr)
+                return redirect(url_for('admin_dashboard'))
+            except Exception:
+                return render_template(
+                    'admin/login.html',
+                    error='Credenciais inválidas',
+                    supabase_enabled=True,
+                )
+
         admin_user = os.environ.get('ADMIN_USER', 'admin')
         admin_pass = os.environ.get('ADMIN_PASS', 'admin')
         if username == admin_user and password == admin_pass:
             session['user'] = username
             session['user_level'] = UserLevel.PROGRAMADOR.value if username == admin_user else UserLevel.ADMINISTRADOR.value
             session['last_login'] = str(datetime.now())
+            session.permanent = True
             record_audit(username, 'login', 'Login administrativo', request.remote_addr)
             return redirect(url_for('admin_dashboard'))
-        return render_template('admin/login.html', error='Credenciais inválidas')
-    # ensure csrf exists
+
+        return render_template(
+            'admin/login.html',
+            error='Credenciais inválidas',
+            supabase_enabled=is_supabase_auth_enabled(),
+        )
+
     generate_csrf_token()
-    return render_template('admin/login.html')
+    return render_template(
+        'admin/login.html',
+        supabase_enabled=is_supabase_auth_enabled(),
+    )
 
 
 @app.route('/admin/logout')
